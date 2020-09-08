@@ -12,7 +12,7 @@
 
         <div class="form-group">
             <label>Name</label>
-            <input type="text" name="name" value="{{ $genre->name }}" class="form-control" />
+            <input type="text" name="name" value="{{ old('name') ?? $genre->name }}" class="form-control" />
         </div>
 
         <button class="btn btn-success">Save</button>

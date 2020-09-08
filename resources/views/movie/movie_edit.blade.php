@@ -10,12 +10,12 @@
 
         <div class="fom-group">
             <label>Name</label>
-            <input type="text"  name="name" value="{{ $movie->name }}" class="form-control" />
+            <input type="text"  name="name" value="{{ old('name') ?? $movie->name }}" class="form-control" />
         </div>
 
         <div class="form-group">
             <label>Year</label>
-            <input type="number" name="year" value="{{ $movie->year }}" class="form-control" />
+            <input type="number" name="year" value="{{ old('year') ?? $movie->year }}" class="form-control" />
         </div>
 
         <div class="form-group">
@@ -23,8 +23,10 @@
             <select name="genre_id" class="form-control">
                 <option value="">Select one</option>
                 @foreach($genres as $genre)
-                    @if($genre->id === $movie->genre_id)
-                        <option value="{{ $genre->id }}" selected="true">{{ $genre->name }}</option>
+                    @if($genre->id == old('genre_id'))
+                        <option value="{{ $genre->id }}" selected>{{ $genre->name }}</option>
+                    @elseif($genre->id === $movie->genre_id)
+                        <option value="{{ $genre->id }}" selected>{{ $genre->name }}</option>
                     @else
                         <option value="{{ $genre->id }}">{{ $genre->name }}</option>
                     @endif
@@ -36,8 +38,10 @@
             <label>Actors</label>
             <select name="actors[]" class="form-control" multiple>
                 @foreach($actors as $actor)
-                    @if(in_array($actor->id, $actor_selected))
-                        <option value="{{ $actor->id }}" selected="true">{{ $actor->name }}</option>
+                    @if(is_array(old('actors')) && in_array($actor->id, old('actors')))
+                        <option value="{{ $actor->id }}" selected>{{ $actor->name }}</option>
+                    @elseif(in_array($actor->id, $actor_selected))
+                        <option value="{{ $actor->id }}" selected>{{ $actor->name }}</option>
                     @else
                         <option value="{{ $actor->id }}">{{ $actor->name }}</option>
                     @endif
