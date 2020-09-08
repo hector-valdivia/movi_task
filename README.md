@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-##To make it work
+## To make it work
 Clone the repo, use <code>composer install</code> then <code>php artisan migrate:fresh --seed</code>
 
 ## About Laravel
