@@ -38,7 +38,7 @@
                     </tr>
                 @endforeach
             @else
-                <tr><td colspan="4" class="text-center">Not movies found</td></tr>
+                <tr><td colspan="5" class="text-center">Not movies found</td></tr>
             @endif
         </tbody>
     </table>
